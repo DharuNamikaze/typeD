@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+*{
+  font-family: poppins;
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
