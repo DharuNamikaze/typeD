@@ -13,7 +13,7 @@ function RootLayout({ children }) {
         <div className="app-container">
           <header>
             <Link href="#">
-            <span  className="m-10 inline-block px-2 py-1 bg-white text-black">typeD - Minimalist Typing App</span>
+            <span  className="m-10 inline-block justify-center typedheader">typeD - Minimalist Typing App</span>
             </Link>
           </header>
         {children}

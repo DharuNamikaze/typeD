@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-const WordDisplay = () => {
+const WordDisplay = ({ words }) => {
   return (
-    <div>WordDisplay</div>
-  )
-}
+    <div className="word-display">
+      {words.map((word, index) => (
+        <span key={index} className="word">{word}</span>
+      ))}
+    </div>
+  );
+};
 
-export default WordDisplay
+export default WordDisplay;

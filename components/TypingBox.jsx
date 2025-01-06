@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-const TypingBox = () => {
+const TypingBox = ({ userInput, setUserInput }) => {
   return (
-    <div>TypingBox</div>
-  )
-}
+    <input
+      type="text"
+      value={userInput}
+      onChange={(e) => setUserInput(e.target.value)}
+      placeholder="Start typing here..."
+      className="typing-box"
+    />
+  );
+};
 
-export default TypingBox
+export default TypingBox;
