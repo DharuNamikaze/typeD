@@ -12,8 +12,8 @@ function RootLayout({ children }) {
       <body>
         <div className="app-container">
           <header>
-            <Link href="#">
-            <span  className="m-10 inline-block justify-center typedheader">typeD - Minimalist Typing App</span>
+            <Link href="/">
+            <h1 className="pt-10">typeD - Typing App</h1>
             </Link>
           </header>
         {children}

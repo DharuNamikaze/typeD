@@ -5,12 +5,44 @@
 *{
   font-family: poppins;
 }
-:root{
-  --blue: #0036d8;
-  --black: #000000;
+
+.App{
+  width: 100%;
+  min-width: 100vh;
+  padding: 20px 40px;
 }
-.typedheader{
-  color:var(--blue);
-  background-color: var(--black);
-  font-size: x-large;
+h1{
+  text-align: center;
+  color: #572ca8;
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+.tab{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+.tab .timer, .tab .square{
+  min-width: 120px;
+  height: 120px;
+  background: #572ca8;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  flex-direction: column;
+  cursor: pointer;
+}
+.tab p{
+  font-size: 1.9rem;
+  font-weight: 300;
+  line-height:1;
+}
+.tab .square{
+  border-radius: 12px;
 }
