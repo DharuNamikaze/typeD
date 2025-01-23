@@ -5,6 +5,7 @@
 *{
   font-family: 'Poppins', sans-serif;
 }
+
 .App{
   width: 100%;
   min-width: 100vh;
@@ -60,17 +61,6 @@ h1{
   animation: cursorBlink 1s infinite;
 }
 
-@keyframes cursorBlink {
-  0%{
-    border-color: #572ca8;
-  }
-  50%{
-    border-color: transparent;
-  }
-  100%{
-    border-color: #572ca8;
-  }
-}
 .char.correct{
   color:  green ;
   /* background-color:#95c590; */
@@ -91,4 +81,16 @@ h1{
   text-align: center;
   cursor: pointer;
   user-select: none;
+}
+
+@keyframes cursorBlink {
+  0%{
+    border-color: #572ca8;
+  }
+  50%{
+    border-color: transparent;
+  }
+  100%{
+    border-color: #572ca8;
+  }
 }

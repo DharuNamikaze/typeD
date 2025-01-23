@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Context = ({currcontent, word, charIndex}) => {
+const Context = React.memo(({currcontent, word, charIndex}) => {
+  console.log("Render Check")
   return (
     <div className="paragraph">
     {
@@ -12,6 +13,6 @@ const Context = ({currcontent, word, charIndex}) => {
     }
   </div>
   )
-}
+})
 
 export default Context;
