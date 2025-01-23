@@ -3,19 +3,18 @@
 @tailwind utilities;
 
 *{
-  font-family: poppins;
+  font-family: 'Poppins', sans-serif;
 }
-
 .App{
   width: 100%;
   min-width: 100vh;
-  padding: 20px 40px;
+  padding: 20px;
 }
 h1{
   text-align: center;
   color: #572ca8;
-  font-size: 1.3rem;
-  font-weight: 900;
+  font-size: 1.8rem;
+  font-weight: 500;
 }
 .tab{
   display: flex;
@@ -45,4 +44,50 @@ h1{
 }
 .tab .square{
   border-radius: 12px;
+}
+.char{
+  text-align: center;
+  color: #111;
+  font-size: 2rem;
+  margin: 1px 1px 0px 1px;
+  border-radius: 2px;
+}
+.char.active{
+  color: #572ca8;
+  border-radius: 0;
+  border-left: 2px solid #572ca8;
+  animation: cursorBlink 1s infinite;
+}
+
+@keyframes cursorBlink {
+  0%{
+    border-color: #572ca8;
+  }
+  50%{
+    border-color: transparent;
+  }
+  100%{
+    border-color: #572ca8;
+  }
+}
+.char.correct{
+  color:  green ;
+  /* background-color:#95c590; */
+}
+.char.incorrect{
+  color:  indianred;
+}
+
+.restart {
+  display: block;
+  width: 100%;
+  margin: 10px auto;
+  background:rgb(231, 229, 227) ;
+  font-size: 1.5rem;
+  font-weight: 500;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
 }
