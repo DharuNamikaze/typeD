@@ -15,4 +15,6 @@ const Context = React.memo(({currcontent, word, charIndex}) => {
   )
 })
 
+Context.displayName='Context';
+
 export default Context;

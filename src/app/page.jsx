@@ -120,7 +120,7 @@ const Page= ()=> {
             <small>Seconds</small>
           </>
         ) : (
-          <small className="">Time's up!</small>
+          <small className="">Tim&apos;s up&#33;</small>
         )}
       </div>
 
@@ -144,7 +144,7 @@ const Page= ()=> {
 
       <div className="square">
         <p>{acc}</p>
-        <small>% Accuracy</small>
+        <small>&#37; Accuracy</small>
       </div>
       <input type="text" className="in" value={word} onChange={handleInput} autoFocus ref={callbackref} style={{ opacity: 0 }} disabled={time===0}/>
 
@@ -152,7 +152,7 @@ const Page= ()=> {
         <Context currcontent={currcontent} word={word} charIndex={charIndex} />
            ) : (
             <>
-        <div className="timeup rounded-xl bg-violet-800 text-white p-10 flex flex-wrap">Time's up! Click the restart button to try again.</div>
+        <div className="timeup rounded-xl bg-violet-800 text-white p-10 flex flex-wrap">Time&apos;s up&#33; Click the restart button to try again.</div>
             </>
       )}
 
