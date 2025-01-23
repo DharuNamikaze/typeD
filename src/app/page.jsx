@@ -8,7 +8,7 @@ import Context from "@components/Context";
 let ranIndex = Math.floor(Math.random() * content.length);
 
 const Page= ()=> {
-  const maxTime = 5; // max time can be changed
+  const maxTime = 60; // max time can be changed
   const [currcontent, setCurrContent] = useState(content[ranIndex]);
   const [word, setWord] = useState('');
   const [charIndex, setCharIndex] = useState(0);
