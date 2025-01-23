@@ -18,11 +18,24 @@ export default function Page() {
   const [acc, setAcc] = useState(0); // accuracy
 
   const totalChar = useRef(0)
+  const totalCorrectChar = useRef(0)
+  const timer = useRef();
+
   useEffect(() => {
     const ranIndex = Math.floor(Math.random() * content.length);
     setCurrContent(content[ranIndex]);
   }, []);
 
+  useEffect(()=>{
+    if(timer.current && time>0){
+      timer.current = setTimeout(() => setTime(sec => sec - 1), 1000)
+    }// if timer.current is true means 1 and time > 0 that means if seconds are available
+      // settimeout (()=> setTime(prevsec => prevsec -1), 1000 1s ku one time prevsec -1 agite irukum so that i can have a time)
+
+    if(timer <=0)
+      clearTimeout(timer.current);
+    return;
+  },[time])
   const callbackref = useCallback(InputEvent => {
     if (InputEvent) {
       document.addEventListener("keydown", () => InputEvent.focus())
@@ -38,7 +51,12 @@ export default function Page() {
 
     setMistakes(mistakes)
     setWpm(wpm)
-    testAccuracy(value)
+    testAccuracy(value, currcontent)
+
+    if (!timer.current) {
+      timer.current = setTimeout(
+        () => setTime(t => t - 1), 1000)
+    }
   }
 
   const testCalculator = (originalValue, typedvalue) => {
@@ -56,48 +74,52 @@ export default function Page() {
     return { mistakes, cpm, wpm }
   }
 
-  function testAccuracy(value) {
+  function testAccuracy(value, content) {
     if (value.length > charIndex) {
-      totalChar.current+=1
-      console.log(totalChar)
+      totalChar.current++;
+      if (value[charIndex] === content[charIndex]) {
+        totalCorrectChar.current++;
+      }
+      setAcc(Math.round(totalCorrectChar.current / totalChar.current * 100))
     }
   }
-    return (
-      <div className="tab">
-        <div className="timer">
-          {time > 0 ? (
-            <>
-              <p>{time}</p>
-              <small>Seconds</small>
-            </>
-          ) : (
-            <small className="">Time's up!</small>
-          )}
-        </div>
+  return (
+    <div className="tab">
+      <div className="timer">
+        {time > 0 ? (
+          <>
+            <p>{time}</p>
+            <small>Seconds</small>
+          </>
+        ) : (
+          <small className="">Time's up!</small>
+        )}
+      </div>
 
-        <div className="square">
-          <p>{wpm}</p>
-          <small>Word/Min</small>
-        </div>
-        {/* 
+      <div className="square">
+        <p>{wpm}</p>
+        <small>Word/Min</small>
+      </div>
+      {/* 
       <div className="square">
         <p>{cpm}</p>
         <small>Char/Min</small>
       </div> */}
 
-        <div className="square">
-          <p>{mistakes}</p>
-          <small>Mistakes</small>
-        </div>
-
-        <div className="square">
-          <p>{acc}</p>
-          <small>% Accuracy</small>
-        </div>
-
-        <input type="text" value={word} onChange={handleInput} autoFocus ref={callbackref} style={{ opacity: 0 }} />
-        <Context currcontent={currcontent} word={word} charIndex={charIndex} />
-        <span className="restart">&#x27F3;</span>
+      <div className="square">
+        <p>{mistakes}</p>
+        <small>Mistakes</small>
       </div>
-    );
-  }
+
+      <div className="square">
+        <p>{acc}</p>
+        <small>% Accuracy</small>
+      </div>
+
+      <input type="text" value={word} onChange={handleInput} autoFocus ref={callbackref} style={{ opacity: 0 }} />
+
+      <Context currcontent={currcontent} word={word} charIndex={charIndex} />
+      <span className="restart">&#x27F3;</span>
+    </div>
+  );
+}
