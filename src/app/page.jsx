@@ -114,7 +114,7 @@ const Page = () => {
 
       {time === 0 && (
         <div className="overlay">
-          <p>Time's up! Press Restart to try again.</p>
+          <p>Time&apos;s up&excl; Press Restart to try again.</p>
         </div>
       )}
 
