@@ -1,96 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Roboto+Mono:wght@300;400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*{
-  font-family: 'Poppins', sans-serif;
+* {
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
 }
 
-.App{
+body {
+  background: #f9f9f9;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Main Container */
+.container {
+  text-align: center;
+  max-width: 750px;
   width: 100%;
-  min-width: 100vh;
   padding: 20px;
 }
-h1{
-  text-align: center;
-  color: #572ca8;
-  font-size: 1.8rem;
-  font-weight: 800;
-}
-.tab{
+
+/* Top Bar: Timer, WPM, Accuracy */
+.top-bar {
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  flex-wrap: wrap;
-  margin: 20px;
-  border-radius: 10px;
+  justify-content: space-between;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #666;
 }
-.tab .timer, .tab .square{
-  min-width: 120px;
-  height: 120px;
-  background: #572ca8;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  flex-direction: column;
-  cursor: pointer;
+
+/* Text Frame - Neumorphic Rectangular */
+.text-frame {
+  border-radius: 6px;
+  padding: 20px;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  text-align: left;
+  width: 100%;
+  min-height: 100px;
+  font-family: 'Roboto Mono', monospace;
+  background: #ffffff;
+  box-shadow: 6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff;
+  border: none;
+  outline: none;
 }
-.tab p{
-  font-size: 1.9rem;
-  font-weight: 300;
-  line-height:1;
+
+/* Typing Character Styles */
+.char {
+  color: #333;
+  font-size: 1.1rem;
+  margin: 0 1px;
+  transition: 0.1s ease-in-out;
 }
-.tab .square{
-  border-radius: 12px;
-}
-.char{
-  text-align: center;
-  color: #111;
-  font-size: 2rem;
-  margin: 1px 1px 0px 1px;
-  border-radius: 2px;
-}
-.char.active{
+
+.char.active {
   color: #572ca8;
-  border-radius: 0;
   border-left: 2px solid #572ca8;
   animation: cursorBlink 1s infinite;
 }
 
-.char.correct{
-  color:  green ;
-  /* background-color:#95c590; */
-}
-.char.incorrect{
-  color:  indianred;
+.char.correct {
+  color: green;
 }
 
-.restart {
-  display: block;
-  width: 100%;
-  margin: 10px auto;
-  background:rgb(231, 229, 227) ;
-  font-size: 1.5rem;
-  font-weight: 500;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+.char.incorrect {
+  color: indianred;
+}
+
+/* Hidden Input Field */
+.hidden-input {
+  position: absolute;
+  opacity: 0;
+}
+
+/* Neumorphic Restart Button */
+.restart-btn {
+  margin-top: 20px;
+  background: #ffffff;
+  border: none;
+  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: #333;
   cursor: pointer;
-  user-select: none;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 4px 4px 8px #d1d9e6, -4px -4px 8px #ffffff;
 }
 
+.restart-btn:hover {
+  box-shadow: inset 4px 4px 8px #d1d9e6, inset -4px -4px 8px #ffffff;
+}
+
+.restart-btn:active {
+  box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff;
+}
+
+/* Blinking Cursor Effect */
 @keyframes cursorBlink {
-  0%{
-    border-color: #572ca8;
-  }
-  50%{
-    border-color: transparent;
-  }
-  100%{
-    border-color: #572ca8;
-  }
+  0% { border-color: #572ca8; }
+  50% { border-color: transparent; }
+  100% { border-color: #572ca8; }
 }
