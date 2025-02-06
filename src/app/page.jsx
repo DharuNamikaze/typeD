@@ -102,7 +102,7 @@ const Page = () => {
   return (
     <div className="container">
       <div className="top-bar">
-        <p>{time > 0 ? `${time}s` : "Time's up!"}</p>
+        <p>{time > 0 ? `${time}s` : "Time&apos;s up!"}</p>
         <p>WPM: {wpm}</p>
         <p>Accuracy: {acc}%</p>
       </div>
