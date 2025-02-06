@@ -4,107 +4,160 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: 'Inter', sans-serif;
-  box-sizing: border-box;
-}
-
-body {
-  background: #f9f9f9;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+body, html {
+  height: 100%;
   margin: 0;
+  font-family: 'Inter', sans-serif;
 }
 
-/* Main Container */
 .container {
-  text-align: center;
-  max-width: 750px;
+  max-width: 100%;
   width: 100%;
-  padding: 20px;
+  height: 100%;
+  margin: 0;
+  padding: 2rem;
+  background: #1a1a1a;
+  border-radius: 6px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-/* Top Bar: Timer, WPM, Accuracy */
 .top-bar {
   display: flex;
   justify-content: space-between;
-  font-size: 1rem;
-  margin-bottom: 15px;
-  color: #666;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background: #2a2a2a;
+  padding: 1rem;
+  border-radius: 12px;
 }
 
-/* Text Frame - Neumorphic Rectangular */
-.text-frame {
-  border-radius: 6px;
-  padding: 20px;
-  font-size: 1.2rem;
-  line-height: 1.5;
-  text-align: left;
-  width: 100%;
-  min-height: 100px;
-  font-family: 'Roboto Mono', monospace;
-  background: #ffffff;
-  box-shadow: 6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff;
-  border: none;
-  outline: none;
-}
-
-/* Typing Character Styles */
-.char {
-  color: #333;
+.top-bar p {
+  margin: 0;
   font-size: 1.1rem;
-  margin: 0 1px;
-  transition: 0.1s ease-in-out;
+  font-weight: 500;
+  background: #3a3a3a;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.char.active {
-  color: #572ca8;
-  border-left: 2px solid #572ca8;
-  animation: cursorBlink 1s infinite;
+.text-frame {
+  background: #2a2a2a;
+  padding: 2rem;
+  border-radius: 12px;
+  font-size: 1.4rem;
+  line-height: 2;
+  min-height: 200px;
+  margin-bottom: 2rem;
+  position: relative;
+  font-family: 'Fira Code', monospace;
+  flex-grow: 1;
 }
 
-.char.correct {
-  color: green;
-}
-
-.char.incorrect {
-  color: indianred;
-}
-
-/* Hidden Input Field */
 .hidden-input {
-  position: absolute;
   opacity: 0;
+  position: absolute;
 }
 
-/* Neumorphic Restart Button */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease;
+  z-index: 10;
+}
+
 .restart-btn {
-  margin-top: 20px;
-  background: #ffffff;
+  background: #007aff;
+  color: white;
   border: none;
-  font-size: 1rem;
-  padding: 8px 16px;
-  border-radius: 6px;
-  color: #333;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 4px 4px 8px #d1d9e6, -4px -4px 8px #ffffff;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 auto;
+  z-index: 20;
 }
 
 .restart-btn:hover {
-  box-shadow: inset 4px 4px 8px #d1d9e6, inset -4px -4px 8px #ffffff;
+  background: #0063cc;
+  transform: scale(1.05);
 }
 
 .restart-btn:active {
-  box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff;
+  transform: scale(0.95);
 }
 
-/* Blinking Cursor Effect */
+.char {
+  position: relative;
+  color: #666;
+}
+
+.char.correct {
+  color: #4caf50;
+}
+
+.char.incorrect {
+  color: #ff4444;
+}
+
+.char.current::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #007aff;
+  animation: cursorBlink 1s infinite;
+}
+
+.bottom-right-text {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 0.8rem;
+  color: #bbb;
+}
+
+
 @keyframes cursorBlink {
-  0% { border-color: #572ca8; }
-  50% { border-color: transparent; }
-  100% { border-color: #572ca8; }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
 }
