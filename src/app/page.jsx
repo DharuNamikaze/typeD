@@ -1,15 +1,15 @@
-'use client'
-import "./globals.css";
+"use client";
+
 import { useCallback, useEffect, useRef, useState } from "react";
 import content from "@components/content";
 import React from "react";
 import Context from "@components/Context";
 
-let ranIndex = Math.floor(Math.random() * content.length);
-
 const Page = () => {
   const maxTime = 60;
-  const [currcontent, setCurrContent] = useState(content[ranIndex]);
+  const [ranIndex, setRanIndex] = useState(null);
+  const [currcontent, setCurrContent] = useState(null);
+
   const [word, setWord] = useState("");
   const [charIndex, setCharIndex] = useState(0);
   const [time, setTime] = useState(maxTime);
@@ -20,6 +20,14 @@ const Page = () => {
   const totalChar = useRef(0);
   const totalCorrectChar = useRef(0);
   const timer = useRef();
+
+  useEffect(() => {
+    if (ranIndex === null) {
+      const index = Math.floor(Math.random() * content.length);
+      setRanIndex(index);
+      setCurrContent(content[index]);
+    }
+  }, [ranIndex]);
 
   useEffect(() => {
     if (time > 0 && timer.current) {
@@ -84,11 +92,12 @@ const Page = () => {
       ri = Math.floor(Math.random() * content.length);
     } while (ri === ranIndex); 
   
-    ranIndex = ri;
+    setRanIndex(ri);
     setCurrContent(content[ri]);
     handleReset();
   };
-  
+
+  if (currcontent === null) return <div>Loading...</div>;
 
   return (
     <div className="container">
@@ -114,11 +123,13 @@ const Page = () => {
 
       {time === 0 && (
         <div className="overlay">
-          <p>Time&apos;s up&#33; Press Restart to try again.</p>
+          <p>Time up! Press Restart to try again.</p>
         </div>
       )}
 
-      <button className="restart-btn" onClick={handleRestart}>↻ Restart</button>
+      <button className="restart-btn" onClick={handleRestart}>Restart</button>
+
+      <div className="bottom-right-text"> made by dharun and beens </div>
     </div>
   );
 };
