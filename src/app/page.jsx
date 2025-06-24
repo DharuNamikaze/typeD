@@ -129,7 +129,7 @@ const Page = () => {
 
       <button className="restart-btn" onClick={handleRestart}>Restart</button>
 
-      <div className="bottom-right-text"> made by rathinavel</div>
+      <div className="bottom-right-text"> made by Namikaze & Beens</div>
     </div>
   );
 };
